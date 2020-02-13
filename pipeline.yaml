@@ -1,7 +1,4 @@
-apply_manifest_task.yaml	pipeline.yaml			update_deployment_task.yaml
-k8s				resources.yaml
-
-------------
+---
 apiVersion: tekton.dev/v1alpha1
 kind: Pipeline
 metadata:

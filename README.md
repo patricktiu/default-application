@@ -47,7 +47,7 @@ Dockerfile adds three things to build application image
 
 3. Create pipeline build tasks and resources
    ```
-   oc create -f pipeline/pipeline.yaml
+   oc create -f pipeline.yaml
    ```
 
 4. Start the pipeline (or use the Tekton dashboard)
