@@ -1,5 +1,25 @@
 ---
 apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: application-repo
+spec:
+  type: git
+  params:
+    - name: url
+      value: https://github.com/patricktiu/default-application
+---
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: application-image
+spec:
+  type: image
+  params:
+    - name: url
+      value: image-registry.openshift-image-registry.svc:5000/default-application/application:latest
+---
+apiVersion: tekton.dev/v1alpha1
 kind: Pipeline
 metadata:
   name: build-and-deploy
@@ -53,26 +73,6 @@ spec:
           value: "default-application"
       runAfter:
         - apply-application-manifests
----
-apiVersion: tekton.dev/v1alpha1
-kind: PipelineResource
-metadata:
-  name: application-repo
-spec:
-  type: git
-  params:
-    - name: url
-      value: https://github.com/patricktiu/default-application
----
-apiVersion: tekton.dev/v1alpha1
-kind: PipelineResource
-metadata:
-  name: application-image
-spec:
-  type: image
-  params:
-    - name: url
-      value: image-registry.openshift-image-registry.svc:5000/default-application/application:latest
 ---
 apiVersion: tekton.dev/v1alpha1
 kind: Task
