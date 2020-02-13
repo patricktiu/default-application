@@ -78,6 +78,7 @@ server = getName(getServerId(""))
 parms = "-appname Application"
 parms += " -node " + node + " -server " + server
 parms += " -nouseMetaDataFromBinary"
+parms += " -MapWebModToVH [['.*', '.*', 'default_host']]"
 app = AdminApp.install("/work/config/DefaultApplication.ear", [parms])
 
 AdminConfig.save()

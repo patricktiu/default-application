@@ -7,20 +7,22 @@ A simple `Hello World` application that demonstrate a basic pattern for deployin
 
 ## Project structure
 ```
+.
 |____README.md
 |____Dockerfile
-|____app.ear
-|____install_app.py
-|____was-config.props
-|____pipeline
-| |____resources.yaml
-| |____apply_manifest_task.yaml
-| |____update_deployment_task.yaml
-| |____pipeline.yaml
-|____k8s
+|____pipeline.yaml
+|____manifest
 | |____deployment.yaml
 | |____service.yaml
 | |____route.yaml
+|____assets
+| |____app
+| | |____DefaultApplication.ear
+| |____config
+| | |____was-config.props
+| | |____install_app.py
+| |____lib
+| | |____.keep
 ```
 
 ## Building the application image
@@ -40,15 +42,12 @@ Dockerfile adds three things to build application image
 
 2. Create a new project
    ```
-   oc new-project hello-world-demo
+   oc new-project default-application
    ```
 
-3. Create pipeline build tasks
+3. Create pipeline build tasks and resources
    ```
-   oc create -f pipeline/update_deployment_task.yaml
-   oc create -f pipeline/apply_manifest_task.yaml
    oc create -f pipeline/pipeline.yaml
-   oc create -f pipeline/resources.yaml
    ```
 
 4. Start the pipeline (or use the Tekton dashboard)
