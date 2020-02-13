@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: default-application
+  name: default-application
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: default-application
+  template:
+    metadata:
+      labels:
+        app: default-application
+    spec:
+      containers:
+        - image: docker.io/app-default-application
+          imagePullPolicy: Always
+          name: default-application
+          ports:
+            - containerPort: 9080
